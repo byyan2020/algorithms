@@ -12,7 +12,7 @@
 # Total Accepted:    289.8K
 # Total Submissions: 545.2K
 # Testcase Example:  '["TimeMap","set","get","get","set","get","get"]\n' +
-  '[[],["foo","bar",1],["foo",1],["foo",3],["foo","bar2",4],["foo",4],["foo",5]]'
+#  '[[],["foo","bar",1],["foo",1],["foo",3],["foo","bar2",4],["foo",4],["foo",5]]'
 #
 # Design a time-based key-value data structure that can store multiple values
 # for the same key at different time stamps and retrieve the key's value at a
