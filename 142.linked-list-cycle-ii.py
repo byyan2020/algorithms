@@ -77,51 +77,29 @@ class ListNode:
 # @lc code=start
 
 class Solution:
-    def cycleExist(self, head):
-    # detect if cycle exists in the linked list.
-    # if the cycle exists, return a node inside the cycle, else return None
-        if head == None:
-            return None
+    def detectCycle(self, head: Optional[ListNode]) -> Optional[ListNode]:
 
-        node_fast = head
-        node_slow = None
-        while node_fast != node_slow:
-            if node_slow == None:
-                node_slow = head
-            if node_fast.next == None or node_fast.next.next == None:
+        slow, fast = head, head
+
+        # Find if there is a circle
+        # If the circle exsit, slow and fast will meet
+        while True:
+            # If there is a circle
+            if not fast or not fast.next:
                 return None
-            node_slow = node_slow.next
-            node_fast = node_fast.next.next
-        return node_slow
+            slow = slow.next
+            fast = fast.next.next
+            if slow == fast:
+                break
         
-    def detectCycle(self, head: ListNode) -> ListNode:
-        if head == None:
-            return None
-        meet_node = self.cycleExist(head)
-        if meet_node == None:
-            return None
-        
-        # the number of the nodes inside the loop
-        pointer = meet_node.next
-        count = 1
-        while pointer != meet_node:
-            pointer = pointer.next
-            count += 1
-        
-        # entry node of the loop
-        node_ahead = head
-        node_behind = head
-        i = 0
-        while i < count:
-            node_ahead = node_ahead.next
-            i += 1
-        while node_ahead != node_behind:
-            node_ahead = node_ahead.next
-            node_behind = node_behind.next
-        
-        return node_ahead
+        # Find the entrance
+        catch = head
+        while catch != slow:
+            catch = catch.next
+            slow = slow.next
 
-        
+        return catch
+              
             
 
         

@@ -70,7 +70,7 @@ class Solution:
             hashmap[char] += 1
         start, end = 0, 0
         counter = len(t)
-        res = ''
+        res = ''  
         min_len = float('inf')
 
         while end < len(s):
